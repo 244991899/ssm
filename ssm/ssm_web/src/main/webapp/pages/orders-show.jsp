@@ -103,7 +103,7 @@
 					<div class="col-md-2 title">订单编号</div>
 					<div class="col-md-4 data">
 						<input type="text" class="form-control" placeholder="订单编号"
-							value="${orders.orderNum }" readonly="readonly">
+							value="${orders.orderNum}" readonly="readonly">
 					</div>
 
 					<div class="col-md-2 title">下单时间</div>

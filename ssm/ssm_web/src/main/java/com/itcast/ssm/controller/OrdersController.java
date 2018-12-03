@@ -36,4 +36,13 @@ public class OrdersController {
         modelAndView.setViewName("orders-page-list");
         return modelAndView;
     }
+    /*跳转订单详情页面*/
+    @RequestMapping(path = "/findById")
+    public ModelAndView findById(@RequestParam(name = "id",required = true)String id){
+        Orders orders = iOrdersService.findById(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("orders",orders);
+        modelAndView.setViewName("orders-show");
+        return modelAndView;
+    }
 }
