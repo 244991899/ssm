@@ -14,7 +14,6 @@ public class OrdersServiceImpl implements IOrdersService {
     private IOrdersDao iOrdersDao;
     @Override
     public List<Orders> findAll(int page,int size) {
-        System.out.println(page+"=========="+size);
         PageHelper.startPage(page,size);
         return iOrdersDao.findAll();
     }

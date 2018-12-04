@@ -15,24 +15,24 @@
 		http://www.springframework.org/schema/aop/spring-aop.xsd">
     <!--扫描controller包-->
     <context:component-scan base-package="com.itcast.ssm.controller"/>
-
-
+    <!--配置转换器，对象的String转date-->
     <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
         <property name="converters">
             <set>
+                <!--自定义类位置-->
                 <bean class="com.itcast.ssm.utils.StringToDateConverter"/>
             </set>
         </property>
     </bean>
-
-
     <!--过滤静态资源-->
     <mvc:default-servlet-handler/>
+    <!--自动开启适配器和处理器，这是Spring MVC为@Controller分发请求所必需的，可配置自定义拦截器-->
     <mvc:annotation-driven conversion-service="conversionService"/>
-
+    <!--视图解析器-->
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/pages/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
-    <aop:aspectj-autoproxy proxy-target-class="true"/> <!--设置为true使用cglib代理，可实现继承代理，默认的代理对象，只能实现接口的代理-->
+    <!--设置为true使用cglib代理，可实现继承代理，默认的代理对象，只能实现接口的代理-->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
 </beans>
