@@ -65,7 +65,9 @@ public class IUserServiceImpl implements IUserService {
     }
 
     @Override
-    public void addRoleToUser(String userId, String roleId) {
-        iUserDao.addRoleToUser(userId, roleId);
+    public void addRoleToUser(String userId, String[] roleId) {
+        for (String id : roleId) {
+            iUserDao.addRoleToUser(userId, id);
+        }
     }
 }

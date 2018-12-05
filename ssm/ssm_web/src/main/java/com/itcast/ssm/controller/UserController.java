@@ -49,7 +49,7 @@ public class UserController {
         return modelAndView;
     }
     @RequestMapping(path = "/addRoleToUser")
-    public ModelAndView addRoleToUser(@RequestParam(name = "userId",required = true)String userId,@RequestParam(name = "ids",required = true) String ids){
+    public ModelAndView addRoleToUser(@RequestParam(name = "userId",required = true)String userId,@RequestParam(name = "ids",required = true) String[] ids){
         iUserService.addRoleToUser(userId, ids);
         UserInfo user = iUserService.findById(userId);
         List<Role> roleList = iUserService.findUserByIdAndAllRole(userId);

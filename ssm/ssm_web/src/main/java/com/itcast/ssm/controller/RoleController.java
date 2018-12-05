@@ -40,7 +40,7 @@ public class RoleController {
         return modelAndView;
     }
     @RequestMapping(path = "/addPermissionToRole")
-    public ModelAndView addPermissionToRole(@RequestParam(name = "roleId",required = true)String roleId,@RequestParam(name = "ids",required = true) String ids){
+    public ModelAndView addPermissionToRole(@RequestParam(name = "roleId",required = true)String roleId,@RequestParam(name = "ids",required = true) String[] ids){
         iRoleService.addPermissionToRole(roleId,ids);
         Role role = iRoleService.findRoleByIdAndAllPermission(roleId);
         List<Permission> permissionList = iRoleService.findAllPermissionById(roleId);

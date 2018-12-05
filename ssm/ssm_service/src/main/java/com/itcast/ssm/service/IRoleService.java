@@ -10,5 +10,5 @@ public interface IRoleService {
     public void save(Role role);
     public abstract Role findRoleByIdAndAllPermission(String id);
     public abstract List<Permission> findAllPermissionById(String roleId);
-    public abstract void addPermissionToRole(String roleId, String permissionId);
+    public abstract void addPermissionToRole(String roleId, String[] permissionId);
 }

@@ -11,5 +11,5 @@ public interface IUserService extends UserDetailsService {
     public abstract UserInfo findById(String id);
     public void save(UserInfo userInfo);
     public abstract List<Role> findUserByIdAndAllRole(String id);
-    public abstract void addRoleToUser(String userId,String roleId);
+    public abstract void addRoleToUser(String userId,String[] roleId);
 }
