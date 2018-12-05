@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/Order")
+@RequestMapping("/Order")
 public class OrdersController {
     @Autowired
     private IOrdersService iOrdersService;
@@ -27,8 +27,8 @@ public class OrdersController {
         return modelAndView;
     }*/
     /*分页*/
-    @RequestMapping(path = "/findAll")
-    public ModelAndView findAll(@RequestParam(name = "page",required = true,defaultValue = "1")int page, @RequestParam(name = "size",required = true,defaultValue = "4")int size){
+    @RequestMapping("/findAll")
+    public ModelAndView findAll(@RequestParam(name = "page",required = true,defaultValue = "1")Integer page, @RequestParam(name = "size",required = true,defaultValue = "4")Integer size){
         List<Orders> ordersList = iOrdersService.findAll(page,size);
         ModelAndView modelAndView = new ModelAndView();
         /*把查询到的结果封装到pageInfo对象中。*/
@@ -38,7 +38,7 @@ public class OrdersController {
         return modelAndView;
     }
     /*跳转订单详情页面*/
-    @RequestMapping(path = "/findById")
+    @RequestMapping("/findById")
     public ModelAndView findById(@RequestParam(name = "id",required = true)String id){
         Orders orders = iOrdersService.findById(id);
         ModelAndView modelAndView = new ModelAndView();

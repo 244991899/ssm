@@ -24,12 +24,12 @@ public class RoleController {
         modelAndView.addObject("roleList",roleList);
         return modelAndView;
     }
-    @RequestMapping(path = "/save")
+    @RequestMapping("/save")
     public String save(Role role){
         iRoleService.save(role);
         return "redirect:findAll";
     }
-    @RequestMapping(path = "/findRoleByIdAndAllPermission")
+    @RequestMapping("/findRoleByIdAndAllPermission")
     public ModelAndView findRoleByIdAndAllPermission(@RequestParam(name = "id",required = true)String id){
         Role role = iRoleService.findRoleByIdAndAllPermission(id);
         List<Permission> permissionList = iRoleService.findAllPermissionById(id);
@@ -39,7 +39,7 @@ public class RoleController {
         modelAndView.setViewName("role-permission-add");
         return modelAndView;
     }
-    @RequestMapping(path = "/addPermissionToRole")
+    @RequestMapping("/addPermissionToRole")
     public ModelAndView addPermissionToRole(@RequestParam(name = "roleId",required = true)String roleId,@RequestParam(name = "ids",required = true) String[] ids){
         iRoleService.addPermissionToRole(roleId,ids);
         Role role = iRoleService.findRoleByIdAndAllPermission(roleId);

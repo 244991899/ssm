@@ -14,7 +14,7 @@ import java.util.List;
 public class PermissionController {
     @Autowired
     private IPermissionService iPermissionService;
-    @RequestMapping(path = "/findAll")
+    @RequestMapping("/findAll")
     public ModelAndView findAll(){
         List<Permission> permissionList = iPermissionService.findAll();
         ModelAndView modelAndView = new ModelAndView();

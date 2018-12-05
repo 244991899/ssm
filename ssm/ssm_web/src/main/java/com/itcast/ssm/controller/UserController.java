@@ -12,11 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/user")
+@RequestMapping("/user")
 public class UserController {
     @Autowired
     private IUserService iUserService;
-    @RequestMapping(path = "/findAll")
+    @RequestMapping("/findAll")
     public ModelAndView findAll(){
         List<UserInfo> infoList = iUserService.findAll();
         ModelAndView modelAndView = new ModelAndView();
@@ -24,7 +24,7 @@ public class UserController {
         modelAndView.setViewName("user-list");
         return modelAndView;
     }
-    @RequestMapping(path = "/findById")
+    @RequestMapping("/findById")
     public ModelAndView findById(@RequestParam(name = "id",required = true)String id){
         UserInfo user = iUserService.findById(id);
         ModelAndView modelAndView = new ModelAndView();
@@ -32,12 +32,12 @@ public class UserController {
         modelAndView.setViewName("user-show");
         return modelAndView;
     }
-    @RequestMapping(path = "/save")
+    @RequestMapping("/save")
     public String save(UserInfo userInfo){
         iUserService.save(userInfo);
         return "redirect:findAll";
     }
-    @RequestMapping(path = "/findUserByIdAndAllRole")
+    @RequestMapping("/findUserByIdAndAllRole")
     public ModelAndView findUserByIdAndAllRole(@RequestParam(name = "id",required = true)String id){
         //不包含的权限
         UserInfo user = iUserService.findById(id);
@@ -48,7 +48,7 @@ public class UserController {
         modelAndView.addObject("roleList",roleList);
         return modelAndView;
     }
-    @RequestMapping(path = "/addRoleToUser")
+    @RequestMapping("/addRoleToUser")
     public ModelAndView addRoleToUser(@RequestParam(name = "userId",required = true)String userId,@RequestParam(name = "ids",required = true) String[] ids){
         iUserService.addRoleToUser(userId, ids);
         UserInfo user = iUserService.findById(userId);

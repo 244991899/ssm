@@ -11,11 +11,11 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
-@RequestMapping(path = "/Product")
+@RequestMapping("/Product")
 public class ProductController {
     @Autowired
     private IProductService iProductService;
-    @RequestMapping(path = "/findAll")
+    @RequestMapping("/findAll")
     public ModelAndView findAll(){
         ModelAndView modelAndView = new ModelAndView();
         List<Product> productList = iProductService.findAll();
@@ -23,7 +23,7 @@ public class ProductController {
         modelAndView.setViewName("product-list");
         return modelAndView;
     }
-    @RequestMapping(path = "/save")
+    @RequestMapping("/save")
     public String save(Product product){
         iProductService.save(product);
         return "redirect:findAll";

@@ -54,4 +54,5 @@
     </bean>
     <!--开启事务注解支持，引入事务管理-->
     <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<aop:aspectj-autoproxy/>-->
 </beans>
