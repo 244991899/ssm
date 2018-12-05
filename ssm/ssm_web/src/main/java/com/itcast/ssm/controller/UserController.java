@@ -1,5 +1,6 @@
 package com.itcast.ssm.controller;
 
+import com.itcast.ssm.domain.Role;
 import com.itcast.ssm.domain.UserInfo;
 import com.itcast.ssm.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,27 @@ public class UserController {
     public String save(UserInfo userInfo){
         iUserService.save(userInfo);
         return "redirect:findAll";
+    }
+    @RequestMapping(path = "/findUserByIdAndAllRole")
+    public ModelAndView findUserByIdAndAllRole(@RequestParam(name = "id",required = true)String id){
+        //不包含的权限
+        UserInfo user = iUserService.findById(id);
+        List<Role> roleList = iUserService.findUserByIdAndAllRole(id);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-role-add");
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("roleList",roleList);
+        return modelAndView;
+    }
+    @RequestMapping(path = "/addRoleToUser")
+    public ModelAndView addRoleToUser(@RequestParam(name = "userId",required = true)String userId,@RequestParam(name = "ids",required = true) String ids){
+        iUserService.addRoleToUser(userId, ids);
+        UserInfo user = iUserService.findById(userId);
+        List<Role> roleList = iUserService.findUserByIdAndAllRole(userId);
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-role-add");
+        modelAndView.addObject("user",user);
+        modelAndView.addObject("roleList",roleList);
+        return modelAndView;
     }
 }

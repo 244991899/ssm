@@ -31,6 +31,7 @@ public class OrdersController {
     public ModelAndView findAll(@RequestParam(name = "page",required = true,defaultValue = "1")int page, @RequestParam(name = "size",required = true,defaultValue = "4")int size){
         List<Orders> ordersList = iOrdersService.findAll(page,size);
         ModelAndView modelAndView = new ModelAndView();
+        /*把查询到的结果封装到pageInfo对象中。*/
         PageInfo pageInfo = new PageInfo(ordersList);
         modelAndView.addObject("pageInfo",pageInfo);
         modelAndView.setViewName("orders-page-list");

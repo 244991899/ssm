@@ -1,5 +1,6 @@
 package com.itcast.ssm.dao;
 
+import com.itcast.ssm.domain.Role;
 import com.itcast.ssm.domain.UserInfo;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Repository;
@@ -59,4 +60,20 @@ public interface IUserDao {
      */
     @Insert("insert into users(username,email,password,phonenum,status) values(#{username},#{email},#{password},#{phoneNum},#{status})")
     public void save(UserInfo userInfo);
+
+    /**
+     * 查询user和他不具有的role
+     * @param userId
+     * @return
+     */
+    @Select("select * from role where id not in(select roleId from users_role where userId = #{userId})")
+    public List<Role> findUserByIdAndAllRole(String userId);
+
+    /**
+     * 用户角色关联,指定多个参数，必须加@Param
+     * @param userId
+     * @param roleId
+     */
+    @Insert("insert into users_role values(#{userId},#{roleId})")
+    public abstract void addRoleToUser(@Param("userId") String userId,@Param("roleId")String roleId);
 }
