@@ -42,4 +42,18 @@ public interface IOrdersDao {
             @Result(column = "id",property = "travellers",many = @Many(select = "com.itcast.ssm.dao.ITravellerDao.findByID"))
     })
     public Orders findById(String id);
+
+    /**
+     * 删除order
+     * @param id
+     */
+    @Delete("delete from orders where id = #{id}")
+    public void del_order(String id);
+
+    /**
+     * 删除关联的中间表
+     * @param id
+     */
+    @Delete("delete from order_traveller where orderId = #{id}")
+    public void del_order_traveller(String id);
 }

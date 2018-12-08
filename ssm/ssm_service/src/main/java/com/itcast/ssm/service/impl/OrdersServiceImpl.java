@@ -22,4 +22,17 @@ public class OrdersServiceImpl implements IOrdersService {
     public Orders findById(String id) {
         return iOrdersDao.findById(id);
     }
+
+    /**
+     * 先删除order和traveller中间表，每个订单必定有旅客
+     * 再删除order
+     * @param ids
+     */
+    @Override
+    public void del(String[] ids) {
+        for (String id : ids) {
+            iOrdersDao.del_order_traveller(id);
+            iOrdersDao.del_order(id);
+        }
+    }
 }

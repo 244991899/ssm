@@ -46,4 +46,9 @@ public class OrdersController {
         modelAndView.setViewName("orders-show");
         return modelAndView;
     }
+    @RequestMapping("/del")
+    public String del(@RequestParam(name = "ids",required = true) String[] ids){
+        iOrdersService.del(ids);
+        return "redirect:findAll";
+    }
 }

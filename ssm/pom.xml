@@ -25,7 +25,8 @@
     <spring.security.version>5.0.1.RELEASE</spring.security.version>
   </properties>
 
-  <dependencies>        <!-- spring -->
+  <dependencies>
+    <!-- 切面支持 -->
     <dependency>
       <groupId>org.aspectj</groupId>
       <artifactId>aspectjweaver</artifactId>
@@ -75,20 +76,21 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
       <version>${spring.version}</version>
-
     </dependency>
+    <!--事务需求jar-->
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
       <version>${spring.version}</version>
     </dependency>
+    <!--测试-->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
     </dependency>
-
+    <!--servlet服务支持，处理页面请求-->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
@@ -101,11 +103,13 @@
       <version>2.0</version>
       <scope>provided</scope>
     </dependency>
+    <!--el表达式支持jar坐标-->
     <dependency>
       <groupId>jstl</groupId>
       <artifactId>jstl</artifactId>
       <version>1.2</version>
-    </dependency>        <!-- log start -->
+    </dependency>
+    <!-- log start日志 -->
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
@@ -121,7 +125,7 @@
       <artifactId>slf4j-log4j12</artifactId>
       <version>${slf4j.version}</version>
     </dependency>        <!-- log end -->
-
+    <!--mybatis框架-->
     <dependency>
       <groupId>org.mybatis</groupId>
       <artifactId>mybatis</artifactId>
@@ -132,6 +136,7 @@
       <artifactId>mybatis-spring</artifactId>
       <version>1.3.0</version>
     </dependency>
+    <!--数据源连接池-->
     <dependency>
       <groupId>c3p0</groupId>
       <artifactId>c3p0</artifactId>
@@ -139,11 +144,13 @@
       <type>jar</type>
       <scope>compile</scope>
     </dependency>
+    <!--pageHelper分页插件-->
     <dependency>
       <groupId>com.github.pagehelper</groupId>
       <artifactId>pagehelper</artifactId>
       <version>5.1.2</version>
     </dependency>
+    <!--权限控制，拦截-->
     <dependency>
       <groupId>org.springframework.security</groupId>
       <artifactId>spring-security-web</artifactId>
@@ -170,19 +177,12 @@
       <artifactId>ojdbc14</artifactId>
       <version>${oracle.version}</version>
     </dependency>
-
+    <!--方法权限控制jar包坐标-->
     <dependency>
       <groupId>javax.annotation</groupId>
       <artifactId>jsr250-api</artifactId>
       <version>1.0</version>
     </dependency>
-    <!--pageHelper分页插件-->
-    <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper</artifactId>
-      <version>5.1.2</version>
-    </dependency>
-
   </dependencies>
 
   <build>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="security"%>
 <aside class="main-sidebar">
 	<!-- sidebar: style can be found in sidebar.less -->
 	<section class="sidebar">
@@ -12,7 +13,11 @@
 			<div class="pull-left info">
 				<p>
 					${sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}
+					<%--<security:authentication property="principal.username"/>--%>
 				</p>
+				<%--<security:authorize access="hasRole('ROLE_ADMIN')">
+				内容
+			</security:authorize>--%>
 				<a href="#"><i class="fa fa-circle text-success"></i> 在线</a>
 			</div>
 		</div>

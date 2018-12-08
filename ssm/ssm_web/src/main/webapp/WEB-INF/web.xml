@@ -3,11 +3,13 @@
          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+
   <!--配置application的类路径-->
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml,classpath:spring-security.xml</param-value>
   </context-param>
+
   <!--过滤器，设置编码-->
   <filter>
     <filter-name>characterEncodingFilter</filter-name>
@@ -30,6 +32,18 @@
     <filter-name>springSecurityFilterChain</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
+
+  <!--配置403页面，如果出现权限不够，跳转403页面-->
+  <error-page>
+    <error-code>403</error-code>
+    <location>/403.jsp</location>
+  </error-page>
+
+  <error-page>
+    <error-code>500</error-code>
+    <location>/500.jsp</location>
+  </error-page>
+
   <!--配置监听器，监听context的创建，加载application-->
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
@@ -37,6 +51,7 @@
   <listener>
     <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
   </listener>
+
   <!--配置servlet-->
   <servlet>
     <servlet-name>dispatcherServlet</servlet-name>
@@ -51,6 +66,7 @@
     <servlet-name>dispatcherServlet</servlet-name>
     <url-pattern>/</url-pattern>
   </servlet-mapping>
+
   <!--配置运行时，首页-->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

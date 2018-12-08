@@ -112,7 +112,7 @@
 											<i class="fa fa-file-o"></i> 新建
 										</button>
 										
-										<button type="button" class="btn btn-default" title="刷新">
+										<button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload()">
 											<i class="fa fa-refresh"></i> 刷新
 										</button>
 									</div>
